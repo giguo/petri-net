@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		90C49168195BB69000BF1068 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90C49167195BB69000BF1068 /* main.cpp */; };
 		90C4916A195BB69000BF1068 /* Petri_Net.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 90C49169195BB69000BF1068 /* Petri_Net.1 */; };
+		90C49172195BB6AD00BF1068 /* place.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90C49170195BB6AD00BF1068 /* place.cpp */; };
+		90C49175195BBA9600BF1068 /* token.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90C49173195BBA9600BF1068 /* token.cpp */; };
+		90C49178195BBCC400BF1068 /* transition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90C49176195BBCC400BF1068 /* transition.cpp */; };
+		90C594BE195C623A00148B5B /* light.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90C594BC195C623A00148B5B /* light.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +32,14 @@
 		90C49164195BB69000BF1068 /* Petri Net */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Petri Net"; sourceTree = BUILT_PRODUCTS_DIR; };
 		90C49167195BB69000BF1068 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		90C49169195BB69000BF1068 /* Petri_Net.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Petri_Net.1; sourceTree = "<group>"; };
+		90C49170195BB6AD00BF1068 /* place.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = place.cpp; sourceTree = "<group>"; };
+		90C49171195BB6AD00BF1068 /* place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = place.h; sourceTree = "<group>"; };
+		90C49173195BBA9600BF1068 /* token.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = token.cpp; sourceTree = "<group>"; };
+		90C49174195BBA9600BF1068 /* token.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = token.h; sourceTree = "<group>"; };
+		90C49176195BBCC400BF1068 /* transition.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = transition.cpp; sourceTree = "<group>"; };
+		90C49177195BBCC400BF1068 /* transition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = transition.h; sourceTree = "<group>"; };
+		90C594BC195C623A00148B5B /* light.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = light.cpp; sourceTree = "<group>"; };
+		90C594BD195C623A00148B5B /* light.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = light.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +73,15 @@
 			isa = PBXGroup;
 			children = (
 				90C49167195BB69000BF1068 /* main.cpp */,
+				90C49171195BB6AD00BF1068 /* place.h */,
+				90C49170195BB6AD00BF1068 /* place.cpp */,
+				90C49177195BBCC400BF1068 /* transition.h */,
+				90C49176195BBCC400BF1068 /* transition.cpp */,
+				90C49173195BBA9600BF1068 /* token.cpp */,
+				90C49174195BBA9600BF1068 /* token.h */,
 				90C49169195BB69000BF1068 /* Petri_Net.1 */,
+				90C594BC195C623A00148B5B /* light.cpp */,
+				90C594BD195C623A00148B5B /* light.h */,
 			);
 			path = "Petri Net";
 			sourceTree = "<group>";
@@ -118,6 +138,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				90C49168195BB69000BF1068 /* main.cpp in Sources */,
+				90C49172195BB6AD00BF1068 /* place.cpp in Sources */,
+				90C49178195BBCC400BF1068 /* transition.cpp in Sources */,
+				90C594BE195C623A00148B5B /* light.cpp in Sources */,
+				90C49175195BBA9600BF1068 /* token.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +251,7 @@
 				90C4916F195BB69000BF1068 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
