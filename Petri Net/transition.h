@@ -19,13 +19,13 @@ private:
     place* next;
     place* next2;
     place* pre;
-    int time;
+    int time[4];
     int next1turn;         //next1允许的token方向
-    int nextnum;
+    int nextnum;            //nextnum等于2时表示有分叉
     bool iscross;
     std::vector<pair> contain;
 public:
-    transition(int i, bool is = 0); //时间i，是否是红绿灯is
+    transition(std::initializer_list<int> i,bool is = 0); //时间i，是否是红绿灯is
     void act();
     bool pop(int i = 0);
     bool push(token& t, bool canrun = 0);
@@ -38,7 +38,7 @@ public:
     place* getnext() const;
     place* getpre() const;
     void setnext2(place* next, int color);
-    int getnowcars(int x, int y);
+    int getnowcars(int x, int y) const;
     
 };
 #endif /* defined(__Petri_Net__transition__) */

@@ -23,7 +23,7 @@ private:
     transition* next;
     transition* pre;
 public:
-    place(std::initializer_list<int> s);
+    place(std::initializer_list<int> s); //初始化容量
     bool push(token& t);
     token& top();
     bool pop();
@@ -38,6 +38,7 @@ public:
     bool subcapacity(int num);
     void addcars(int x, int y, int cars);
     int getnowcars(int x,int y) const;
+    void free_notdelete();      //只释放拖肯，不改变nowcars
 };
 
 #endif /* defined(__Petri_Net__place__) */

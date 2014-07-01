@@ -18,8 +18,8 @@ private:
 public:
     token(int d, int t);
     token(const token& t);
-    int getdirctions();
-    int getturn();
+    int getdirctions() const;
+    int getturn() const;
     void setdirections(int d);
     void setturn(int t);
 };

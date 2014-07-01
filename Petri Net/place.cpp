@@ -67,7 +67,7 @@ bool place::subcapacity(int num)
     this->capacity[num] = this->capacity[num] - 1;
     return 1;
 }
-void place::addcars(int x, int y, int cars)
+void place::addcars(int x, int y, int cars)     //x表方向 y表转向 cars表个数
 {
     for (auto i = 0; i != cars; i++) {
         this->push(*(new token(x, y)));
@@ -88,4 +88,11 @@ void place::act()
 int place::getnowcars(int x,int y) const
 {
     return nowcars[x][y];
+}
+void place::free_notdelete()
+{
+    while (!contain.empty()) {
+        delete &contain.front();
+        contain.pop();
+    }
 }

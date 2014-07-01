@@ -7,25 +7,21 @@
 //
 #include "place.h"
 #include "transition.h"
+#include <initializer_list>
 
-
-transition::transition(int i,bool is): next(nullptr), pre(nullptr), time(i), nextnum(1), iscross(is){}
+transition::transition(std::initializer_list<int> i,bool is): next(nullptr), pre(nullptr), nextnum(0), iscross(is)
+{
+    for (int num = 0; num != i.size(); num++) {
+        time[num] = *(i.begin() + num);
+    }
+}
 bool transition::pop(int i)
 {
-    if (i == 0) {
-        if (!contain.empty() && contain.front().second >= time) {
-            contain.erase(contain.begin());
-            return 1;
-        }
-        return 0;
+    if (i <= contain.size() - 1 && contain[i].second >= time[contain[i].first.getdirctions()]){
+        contain.erase(contain.begin() + i);
+        return 1;
     }
-    else { 
-        if (i < contain.size() - 1 && contain[i].second >= time){
-            contain.erase(contain.begin() + i);
-            return 1;
-        }
-        return 0;
-    }
+    return 0;
 }
 bool transition::push(token& t, bool canrun)
 {
@@ -72,6 +68,7 @@ void transition::setnext2(place* next, int color)
 void transition::setnext(place* next)
 {
     this->next = next;
+    nextnum += 1;
 }
 void transition::setpre(place* pre)
 {
@@ -101,11 +98,11 @@ void transition::act()
     try {
         if (nextnum == 1) {
             if (this->next != nullptr) {
-                if (!contain.empty()) {
-                    token *k = new token(contain[0].first);
-                    while(this->pop()){
+                for (int i = 0; i != contain.size(); i++) {
+                    token* k = new token(contain[i].first);
+                    if (this->pop(i)) {
                         this->next->push(*k);
-                        k = new token(contain[0].first);
+                        --i;
                     }
                 }
             }
@@ -131,8 +128,11 @@ void transition::act()
     }
     catch (int i){}
     this->next->act();
+    if (nextnum == 2) {
+        this->next2->act();
+    }
 }
-int transition::getnowcars(int x, int y)
+int transition::getnowcars(int x, int y) const
 {
     auto k = 0;
     for (auto beg = contain.begin(); beg != contain.end(); beg++)
