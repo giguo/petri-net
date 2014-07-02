@@ -12,7 +12,7 @@
 #include <iostream>
 #include <vector>
 #include "light.h"
-typedef std::pair<token, int> pair;
+typedef std::pair<token, float> pair;
 class place;
 class transition
 {
@@ -27,7 +27,7 @@ private:
     std::vector<pair> contain;
     static Light l;
 public:
-    transition(std::initializer_list<int> i,bool is = 0); //时间i，是否是红绿灯is
+    transition(std::initializer_list<float> i,bool is = 0); //时间i，是否是红绿灯is
     void act();
     bool pop(int i = 0);
     bool push(token& t);

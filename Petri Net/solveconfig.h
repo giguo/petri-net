@@ -21,7 +21,7 @@ public:
     class tran
     {
     public:
-        int time[4];
+        float time[4];
         bool isSignal = 0;
     };
     plac p1;
