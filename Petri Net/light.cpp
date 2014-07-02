@@ -7,6 +7,17 @@
 //
 
 #include "light.h"
+light::light(){
+    localphase = 1;
+    remaintime = greenlight_fixedtime;
+    green_losttime = greenlight_losttime;
+}
+fixedLight::fixedLight()
+{
+    localphase = 1;
+    remaintime = greenlight_fixedtime;
+    green_losttime = greenlight_losttime;
+}
 void fixedLight::changephase()
 {
     localphase = localphase % 4 + 1;
@@ -21,7 +32,8 @@ void fixedLight::act()
     if (remaintime) {
         --remaintime;
     }
-    else {
+    if (!remaintime) {
+        std::cerr << "\033[33mphase changed from " << localphase << " to " << localphase % 4 + 1 << "\033[0m" << std::endl;
         changephase();
     }
 }

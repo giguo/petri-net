@@ -8,10 +8,9 @@
 #include "place.h"
 #include "transition.h"
 #include <initializer_list>
+Light transition::l;
 
-light* transition::l = isfixed?(light*)(new fixedLight):(light*)(new adaptLight);
-
-transition::transition(std::initializer_list<int> i,bool is): next(nullptr), pre(nullptr), nextnum(0), iscross(is)
+transition::transition(std::initializer_list<float> i,bool is): next(nullptr), pre(nullptr), nextnum(0), iscross(is)
 {
     for (int num = 0; num != i.size(); num++) {
         time[num] = *(i.begin() + num);
@@ -28,7 +27,9 @@ bool transition::pop(int i)
 bool transition::push(token& t)
 {
     if (iscross == 1) {
-         //return 0;
+        if (!l.canrun(t)) {
+            return 0;
+        }
     }
     if (this->next != nullptr) {
         if (nextnum == 1)
@@ -152,4 +153,16 @@ int transition::getnowcars(int x, int y) const
     }
     return k;
     
+}
+int transition::get_local_phase() const
+{
+    return l.localphase;
+}
+void transition::light_act()
+{
+    l.act();
+}
+int transition::get_local_phase_time() const
+{
+    return l.remaintime;
 }

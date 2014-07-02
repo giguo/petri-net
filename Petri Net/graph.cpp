@@ -96,19 +96,22 @@ void graph::add1Car(bool realrandom)
 }
 void graph::act()
 {
-    add1Car();
-    t8.act();
-    t82.act();
-    p7.act();
-    p72.act();
-    t6.act();
-    t62.act();
-    p5.act();
-    p52.act();
-    t4.act();
-    p3.act();
-    t2.act();
-    p1.act();
+    t8.light_act();
+    for (int i = 0; i != 10; i++) {
+        add1Car();
+        t8.act();
+        t82.act();
+        p7.act();
+        p72.act();
+        t6.act();
+        t62.act();
+        p5.act();
+        p52.act();
+        t4.act();
+        p3.act();
+        t2.act();
+        p1.act();
+    }
 }
 using namespace std;
 void graph::print_graph_nth(int i, const char* a) const
@@ -212,7 +215,10 @@ void graph::print_graph(int i) const
         print_graph_nth(i, " \t");
     }
 }
-
+void graph::print_light() const
+{
+    cout << "local phase:" << t8.get_local_phase() << '\t' << "Green time remain:" << t8.get_local_phase_time() << endl;
+}
 
 
 
