@@ -1,28 +1,28 @@
 [flux]
-left=0.0:0.0:0.0:0.0:0.0
-down=0.0:0.0:0.0:0.0:0.0
-right=0.0:0.0:0.0:0.0:0.0
-up=0.0:0.0:0.0:0.0:0.0
+left=0.4:0.0:0.0:0.1
+down=0.3:0.0:0.0:0.1
+right=0.2:0.0:0.0:0.1
+up=0.1:0.0:0.0:0.2
 
 [p1]
-capacity=0:0:0:0
+capacity=30000:30000:30000:30000
 
 [t2]
 time=0:0:0:0
 iscross=0
 
 [p3]
-capacity=0:0:0:0
+capacity=1:1:1:1
 
 [t4]
 time=0:0:0:0
 iscross=0
 
 [p5]
-capacity=0:0:0:0
+capacity=1:1:1:1
 
 [p52]
-capacity=0:0:0:0
+capacity=1:1:1:1
 
 [t6]
 time=0:0:0:0
@@ -33,24 +33,24 @@ time=0:0:0:0
 iscross=0
 
 [p7]
-capacity=0:0:0:0
+capacity=1:1:1:1
 
 [p72]
-capacity=0:0:0:0
+capacity=1:1:1:1
 
 [t8]
 time=0:0:0:0
-iscross=0
+iscross=1
 
 [t82]
 time=0:0:0:0
-iscross=0
+iscross=1
 
 [p9]
-capacity=0:0:0:0
+capacity=30000:30000:30000:30000
 
 [p921]
-capacity=0:0:0:0
+capacity=30000:30000:30000:30000
 
 [p922]
-capacity=0:0:0:0
+capacity=30000:30000:30000:30000

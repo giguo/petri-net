@@ -11,16 +11,44 @@
 
 #include <iostream>
 #include "token.h"
+const bool isfixed = 0;                     //是否选择固定相位
+const int greenlight_fixedtime = 30;        //固定相位时绿灯时间
+//const int yellowlight_time = 2;           //黄灯时间
+const int greenlight_losttime = 2;          //绿灯损失时间
+const int greenlight_mintime = 30;          //绿灯最小时间
+const int greenlight_maxtime = 80;          //绿灯最长时间
+const int redlight_mintime = 120;           //红灯最小时间
+const int redlight_maxtime = 200;           //红灯最长时间
 
 class light
 {
-private:
-    int localphase;                 //当前相位
+protected:
+    int localphase = 1;             //当前相位 1:第一相位
+//    int yellowtime;               //剩余黄灯时间
     int remaintime;                 //剩余时间
+    int green_losttime;             //绿灯损失时间
     
 public:
-    void changephase();                 //切换相位
-    bool canrun(int direct, int turn);  //测试该方向能否走
-    bool canrun(const token& t)const;   //测试该token能否走
+    virtual void act();                                 //更新
+    virtual void changephase();                         //切换相位
+    virtual bool canrun(int direct, int turn) const;    //测试该方向能否走
+    virtual bool canrun(const token& t)const;           //测试该token能否走
+};
+
+class fixedLight:public light
+{
+public:
+    void act();
+    void changephase();
+    bool canrun(int direct, int turn) const;
+    bool canrun(const token& t)const;
+};
+class adaptLight:public light
+{
+public:
+    void act();
+    void changephase();
+    bool canrun(int direct, int turn) const;
+    bool canrun(const token& t)const;
 };
 #endif /* defined(__Petri_Net__light__) */

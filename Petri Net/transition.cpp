@@ -9,6 +9,8 @@
 #include "transition.h"
 #include <initializer_list>
 
+light* transition::l = isfixed?(light*)(new fixedLight):(light*)(new adaptLight);
+
 transition::transition(std::initializer_list<int> i,bool is): next(nullptr), pre(nullptr), nextnum(0), iscross(is)
 {
     for (int num = 0; num != i.size(); num++) {
@@ -23,10 +25,10 @@ bool transition::pop(int i)
     }
     return 0;
 }
-bool transition::push(token& t, bool canrun)
+bool transition::push(token& t)
 {
     if (iscross == 1) {
-         if (canrun == 0) return 0;  
+         //return 0;
     }
     if (this->next != nullptr) {
         if (nextnum == 1)
@@ -95,6 +97,7 @@ place* transition::getpre() const
 void transition::act()
 {
     this->update();
+    
     try {
         if (nextnum == 1) {
             if (this->next != nullptr) {
@@ -103,6 +106,9 @@ void transition::act()
                     if (this->pop(i)) {
                         this->next->push(*k);
                         --i;
+                    }
+                    else {
+                        delete k;
                     }
                 }
             }
@@ -120,6 +126,9 @@ void transition::act()
                                 this->next2->push(*k);
                             }
                             --i;
+                        }
+                        else {
+                            delete k;
                         }
                     }
                 }

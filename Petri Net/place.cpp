@@ -18,23 +18,24 @@ place::place(std::initializer_list<int> s):next(nullptr), pre(nullptr)
 }
 bool place::push(token& t)
 {
-    contain.push(t);
+    contain.push_back(t);
     nowcars[t.getdirctions()][t.getturn()] += 1;
     return 1;
 }
-bool place::pop()
+bool place::pop(int i)
 {
-    if (contain.empty()) return 0;
-    auto k = contain.front();
-    nowcars[k.getdirctions()][k.getturn()] -= 1;
-    
-    contain.pop();
-    return 1;
+    if (i <= contain.size() - 1){
+        auto k = contain[i];
+        nowcars[k.getdirctions()][k.getturn()] -= 1;
+        contain.erase(contain.begin() + i);
+        return 1;
+    }
+    return 0;
 }
 token& place::top()
 {
     if (contain.empty()) throw 0;
-    else return contain.front();
+    else return *contain.begin();
 }
 void place::setnext(transition* nex)
 {
@@ -77,9 +78,15 @@ void place::act()
 {
     try {
         if (this->next != nullptr) {
-            while (this->next->push(this->top()))
-            {
-                this->pop();
+            for (int i = 0; i != contain.size(); i++) {
+                token* t = new token(contain[i]);
+                if (this->next->push(*t)) {
+                    this->pop(i);
+                    --i;
+                }
+                else {
+                    delete t;
+                }
             }
         }
     }
@@ -88,11 +95,4 @@ void place::act()
 int place::getnowcars(int x,int y) const
 {
     return nowcars[x][y];
-}
-void place::free_notdelete()
-{
-    while (!contain.empty()) {
-        delete &contain.front();
-        contain.pop();
-    }
 }

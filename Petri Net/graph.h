@@ -31,13 +31,14 @@ private:
     transition t8, t82;
     place p9, p921, p922;
     float flux[4][4];
-    std::random_device real_r;
-    std::default_random_engine r;
+    std::random_device real_r;      //真随机数
+    std::default_random_engine r;   //假随机数
+    
 public:
     graph(solveconfig config);
     void act();
     void add1Car(bool realrandom = 0);
-    void print_graph() const;
+    void print_graph(int i) const;
     void print_graph_nth(int i, const char* a) const;
 };
 #endif /* defined(__Petri_Net__graph__) */

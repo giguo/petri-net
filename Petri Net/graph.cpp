@@ -12,21 +12,26 @@ using namespace boost::python;
 
 graph::graph(solveconfig config):
 p1({config.p1.capacity[0], config.p1.capacity[1], config.p1.capacity[2], config.p1.capacity[3]}),
-t2({config.t2.time[0], config.t2.time[1], config.t2.time[2], config.t2.time[3]}),
+t2({config.t2.time[0], config.t2.time[1], config.t2.time[2], config.t2.time[3]},config.t2.isSignal),
 p3({config.p3.capacity[0], config.p3.capacity[1], config.p3.capacity[2], config.p3.capacity[3]}),
-t4({config.t4.time[0], config.t4.time[1], config.t4.time[2], config.t4.time[3]}),
+t4({config.t4.time[0], config.t4.time[1], config.t4.time[2], config.t4.time[3]},config.t4.isSignal),
 p5({config.p5.capacity[0], config.p5.capacity[1], config.p5.capacity[2], config.p5.capacity[3]}),
 p52({config.p52.capacity[0], config.p52.capacity[1], config.p52.capacity[2], config.p52.capacity[3]}),
-t6({config.t6.time[0], config.t6.time[1], config.t6.time[2], config.t6.time[3]}),
-t62({config.t62.time[0], config.t62.time[1], config.t62.time[2], config.t62.time[3]}),
+t6({config.t6.time[0], config.t6.time[1], config.t6.time[2], config.t6.time[3]},config.t6.isSignal),
+t62({config.t62.time[0], config.t62.time[1], config.t62.time[2], config.t62.time[3]},config.t62.isSignal),
 p7({config.p7.capacity[0], config.p7.capacity[1], config.p7.capacity[2], config.p7.capacity[3]}),
 p72({config.p72.capacity[0], config.p72.capacity[1], config.p72.capacity[2], config.p72.capacity[3]}),
-t8({config.t8.time[0], config.t8.time[1], config.t8.time[2], config.t8.time[3]}),
-t82({config.t82.time[0], config.t82.time[1], config.t82.time[2], config.t82.time[3]}),
+t8({config.t8.time[0], config.t8.time[1], config.t8.time[2], config.t8.time[3]},config.t8.isSignal),
+t82({config.t82.time[0], config.t82.time[1], config.t82.time[2], config.t82.time[3]},config.t82.isSignal),
 p9({config.p9.capacity[0], config.p9.capacity[1], config.p9.capacity[2], config.p9.capacity[3]}),
 p921({config.p921.capacity[0], config.p921.capacity[1], config.p921.capacity[2], config.p921.capacity[3]}),
 p922({config.p922.capacity[0], config.p922.capacity[1], config.p922.capacity[2], config.p922.capacity[3]})
 {
+    for (int i = 0; i != 4; i++) {
+        for (int j = 0; j != 4; j++) {
+            flux[i][j] = config.flux[i][j];
+        }
+    }
     p1.setattach(&t2);
     t2.setattach(&p3);
     p3.setattach(&t4);
@@ -41,53 +46,50 @@ p922({config.p922.capacity[0], config.p922.capacity[1], config.p922.capacity[2],
     t8.setattach(&p9);
     t82.setattach(&p921);
     t82.setattach2(&p922, 1);
-    for (int i = 0; i != 4; i++) {
-        for (int j = 0; j != 4; j++) {
-            flux[i][j] = config.flux[i][j];
-        }
-    }
 }
 void graph::add1Car(bool realrandom)
 {
     if (realrandom) {
         for (int i = 0; i != 4; i++) {
-            std::bernoulli_distribution b(flux[i][0]);
+            std::poisson_distribution<> b(flux[i][0]);
             int hascar = b(real_r);
-            if (hascar) {
-                std::bernoulli_distribution b1(flux[i][1]);
-                if (b1(real_r)) {
+            while (hascar) {
+                std::uniform_real_distribution<> u(0, 1);
+                float tmp = u(real_r);
+                if (tmp < flux[i][1]) {
                     p1.addcars(i, 0, 1);
                 }
                 else {
-                    std::bernoulli_distribution b2(flux[i][2]);
-                    if (b2(real_r)) {
+                    if (tmp < flux[i][2]) {
                         p1.addcars(i, 1, 1);
                     }
                     else {
                         p1.addcars(i, 2, 1);
                     }
                 }
+                --hascar;
             }
         }
     }
     else {
         for (int i = 0; i != 4; i++) {
-            std::bernoulli_distribution b(flux[i][0]);
+            std::poisson_distribution<> b(flux[i][0]);
             int hascar = b(r);
-            if (hascar) {
-                std::bernoulli_distribution b1(flux[i][1]);
-                if (b1(r)) {
+            while (hascar) {
+                std::uniform_real_distribution<> u(0, 1);
+                float tmp = u(r);
+                if (tmp < flux[i][1]) {
                     p1.addcars(i, 0, 1);
                 }
                 else {
-                    std::bernoulli_distribution b2(flux[i][2]);
-                    if (b2(r)) {
+                    if (tmp < flux[i][2]) {
                         p1.addcars(i, 1, 1);
                     }
                     else {
                         p1.addcars(i, 2, 1);
                     }
                 }
+                --hascar;
             }
         }
     }
@@ -203,9 +205,9 @@ void graph::print_graph_nth(int i, const char* a) const
     
     cout << endl;
 }
-void graph::print_graph() const
+void graph::print_graph(int i) const
 {
-    cout << "now condition:" << endl;
+    cout << "now situation:" << i << endl;
     for (int i = 0; i != 4; i++) {
         print_graph_nth(i, " \t");
     }

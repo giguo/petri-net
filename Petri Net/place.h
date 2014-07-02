@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include <queue>
+#include <vector>
 #include "token.h"
 #include <initializer_list>
 #include "transition.h"
@@ -19,14 +20,14 @@ class place
 private:
     int capacity[4];        //当前库所的剩余容量
     int nowcars[4][3];      //当前库所的车辆数
-    std::queue<token> contain;
+    std::vector<token> contain;
     transition* next;
     transition* pre;
 public:
     place(std::initializer_list<int> s); //初始化容量
     bool push(token& t);
     token& top();
-    bool pop();
+    bool pop(int i);
     void act();
     void setnext(transition* nex);
     void setpre(transition* pre);
@@ -38,7 +39,7 @@ public:
     bool subcapacity(int num);
     void addcars(int x, int y, int cars);
     int getnowcars(int x,int y) const;
-    void free_notdelete();      //只释放拖肯，不改变nowcars
+    //void free_notdelete();      //只释放拖肯，不改变nowcars
 };
 
 #endif /* defined(__Petri_Net__place__) */
