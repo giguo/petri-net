@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9085E145195E8D620085DB56 /* graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9085E143195E8D620085DB56 /* graph.cpp */; };
 		90C49168195BB69000BF1068 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90C49167195BB69000BF1068 /* main.cpp */; };
 		90C4916A195BB69000BF1068 /* Petri_Net.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 90C49169195BB69000BF1068 /* Petri_Net.1 */; };
 		90C49172195BB6AD00BF1068 /* place.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90C49170195BB6AD00BF1068 /* place.cpp */; };
 		90C49175195BBA9600BF1068 /* token.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90C49173195BBA9600BF1068 /* token.cpp */; };
 		90C49178195BBCC400BF1068 /* transition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90C49176195BBCC400BF1068 /* transition.cpp */; };
 		90C594BE195C623A00148B5B /* light.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90C594BC195C623A00148B5B /* light.cpp */; };
+		90C9D15B195EBD03007DB6F9 /* solveconfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90C9D159195EBD03007DB6F9 /* solveconfig.cpp */; };
+		90F54E54195EBA5A0010EA21 /* libboost_python.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90F54E53195EBA5A0010EA21 /* libboost_python.a */; };
+		90F54E56195EBA7B0010EA21 /* Python in Frameworks */ = {isa = PBXBuildFile; fileRef = 90F54E55195EBA7B0010EA21 /* Python */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +33,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		90623BB0195F07CE00FE62E6 /* config.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = config.py; sourceTree = "<group>"; };
+		9085E143195E8D620085DB56 /* graph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = graph.cpp; sourceTree = "<group>"; };
+		9085E144195E8D620085DB56 /* graph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = graph.h; sourceTree = "<group>"; };
 		90C49164195BB69000BF1068 /* Petri Net */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Petri Net"; sourceTree = BUILT_PRODUCTS_DIR; };
 		90C49167195BB69000BF1068 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		90C49169195BB69000BF1068 /* Petri_Net.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Petri_Net.1; sourceTree = "<group>"; };
@@ -40,6 +47,11 @@
 		90C49177195BBCC400BF1068 /* transition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = transition.h; sourceTree = "<group>"; };
 		90C594BC195C623A00148B5B /* light.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = light.cpp; sourceTree = "<group>"; };
 		90C594BD195C623A00148B5B /* light.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = light.h; sourceTree = "<group>"; };
+		90C9D159195EBD03007DB6F9 /* solveconfig.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = solveconfig.cpp; sourceTree = "<group>"; };
+		90C9D15A195EBD03007DB6F9 /* solveconfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = solveconfig.h; sourceTree = "<group>"; };
+		90F54E53195EBA5A0010EA21 /* libboost_python.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_python.a; path = /usr/boost/libs/libboost_python.a; sourceTree = "<absolute>"; };
+		90F54E55195EBA7B0010EA21 /* Python */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = Python; path = /System/Library/Frameworks/Python.framework/Versions/2.7/Python; sourceTree = "<absolute>"; };
+		90F54E58195EBB0C0010EA21 /* config */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = config; path = "Petri Net/config"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +59,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90F54E56195EBA7B0010EA21 /* Python in Frameworks */,
+				90F54E54195EBA5A0010EA21 /* libboost_python.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,8 +70,10 @@
 		90C4915B195BB69000BF1068 = {
 			isa = PBXGroup;
 			children = (
+				90F54E57195EBA960010EA21 /* library */,
 				90C49166195BB69000BF1068 /* Petri Net */,
 				90C49165195BB69000BF1068 /* Products */,
+				90C984F31962A09C009E2399 /* config */,
 			);
 			sourceTree = "<group>";
 		};
@@ -73,17 +89,39 @@
 			isa = PBXGroup;
 			children = (
 				90C49167195BB69000BF1068 /* main.cpp */,
+				9085E144195E8D620085DB56 /* graph.h */,
+				9085E143195E8D620085DB56 /* graph.cpp */,
 				90C49171195BB6AD00BF1068 /* place.h */,
 				90C49170195BB6AD00BF1068 /* place.cpp */,
 				90C49177195BBCC400BF1068 /* transition.h */,
 				90C49176195BBCC400BF1068 /* transition.cpp */,
-				90C49173195BBA9600BF1068 /* token.cpp */,
 				90C49174195BBA9600BF1068 /* token.h */,
-				90C49169195BB69000BF1068 /* Petri_Net.1 */,
-				90C594BC195C623A00148B5B /* light.cpp */,
+				90C49173195BBA9600BF1068 /* token.cpp */,
 				90C594BD195C623A00148B5B /* light.h */,
+				90C594BC195C623A00148B5B /* light.cpp */,
+				90C9D15A195EBD03007DB6F9 /* solveconfig.h */,
+				90C9D159195EBD03007DB6F9 /* solveconfig.cpp */,
+				90C49169195BB69000BF1068 /* Petri_Net.1 */,
 			);
 			path = "Petri Net";
+			sourceTree = "<group>";
+		};
+		90C984F31962A09C009E2399 /* config */ = {
+			isa = PBXGroup;
+			children = (
+				90F54E58195EBB0C0010EA21 /* config */,
+				90623BB0195F07CE00FE62E6 /* config.py */,
+			);
+			name = config;
+			sourceTree = "<group>";
+		};
+		90F54E57195EBA960010EA21 /* library */ = {
+			isa = PBXGroup;
+			children = (
+				90F54E55195EBA7B0010EA21 /* Python */,
+				90F54E53195EBA5A0010EA21 /* libboost_python.a */,
+			);
+			name = library;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +175,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9085E145195E8D620085DB56 /* graph.cpp in Sources */,
 				90C49168195BB69000BF1068 /* main.cpp in Sources */,
+				90C9D15B195EBD03007DB6F9 /* solveconfig.cpp in Sources */,
 				90C49172195BB6AD00BF1068 /* place.cpp in Sources */,
 				90C49178195BBCC400BF1068 /* transition.cpp in Sources */,
 				90C594BE195C623A00148B5B /* light.cpp in Sources */,
@@ -180,6 +220,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/boost/include,
+					/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -213,6 +259,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/boost/include,
+					/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				SDKROOT = macosx;
 			};
@@ -221,6 +273,17 @@
 		90C4916E195BB69000BF1068 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/boost/include,
+					/usr/include/python2.7,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/boost/libs,
+					"$(SYSTEM_LIBRARY_DIR)/Frameworks/Python.framework/Versions/2.7",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -228,6 +291,17 @@
 		90C4916F195BB69000BF1068 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/boost/include,
+					/usr/include/python2.7,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/boost/libs,
+					"$(SYSTEM_LIBRARY_DIR)/Frameworks/Python.framework/Versions/2.7",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

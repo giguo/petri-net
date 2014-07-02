@@ -48,7 +48,7 @@ bool transition::push(token& t)
     if (this->pre != nullptr) {
         this->pre->addcapacity(t.getdirctions());
     }
-    contain.push_back(pair(t, 0.1));
+    contain.push_back(pair(t, 1.0 / (float)frequency));
     return 1;
 }
 token& transition::top()
@@ -59,7 +59,7 @@ token& transition::top()
 void transition::update()
 {
     for (auto& beg: contain){
-        beg.second += 0.1;
+        beg.second += 1.0 / (float)frequency;
     }
 }
 void transition::setnext2(place* next, int color)

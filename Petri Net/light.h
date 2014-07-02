@@ -13,6 +13,7 @@
 #include "token.h"
 
 #define Light fixedLight
+const int frequency = 10;                   //更新频率
 const bool isfixed = 0;                     //是否选择固定相位
 const int greenlight_fixedtime = 30;        //固定相位时绿灯时间
 //const int yellowlight_time = 2;           //黄灯时间

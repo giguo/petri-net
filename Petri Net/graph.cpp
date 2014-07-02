@@ -51,7 +51,7 @@ void graph::add1Car(bool realrandom)
 {
     if (realrandom) {
         for (int i = 0; i != 4; i++) {
-            std::poisson_distribution<> b(flux[i][0] / 10);
+            std::poisson_distribution<> b(flux[i][0] / frequency);
             int hascar = b(real_r);
             while (hascar) {
                 std::uniform_real_distribution<> u(0, 1);
@@ -73,7 +73,7 @@ void graph::add1Car(bool realrandom)
     }
     else {
         for (int i = 0; i != 4; i++) {
-            std::poisson_distribution<> b(flux[i][0] / 10);
+            std::poisson_distribution<> b(flux[i][0] / frequency);
             int hascar = b(r);
             while (hascar) {
                 std::uniform_real_distribution<> u(0, 1);
@@ -97,7 +97,7 @@ void graph::add1Car(bool realrandom)
 void graph::act()
 {
     t8.light_act();
-    for (int i = 0; i != 10; i++) {
+    for (int i = 0; i != frequency; i++) {
         add1Car();
         t8.act();
         t82.act();

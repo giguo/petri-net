@@ -16,7 +16,7 @@ int main(int argc, const char * argv[])
 {
     shared_ptr<solveconfig> s(new solveconfig());
     shared_ptr<graph> g(new graph(*s));
-    for (int i = 1 ; i != 900; i++) {
+    for (int i = 1 ; i != 800; i++) {
         g->act();
         g->print_graph(i);
     }
