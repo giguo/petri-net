@@ -19,5 +19,6 @@ int main(int argc, const char * argv[])
     for (int i = 1 ; i != 800; i++) {
         g->act();
         g->print_graph(i);
+        cout << "延迟时间" << g->get_delay_time() << endl;
     }
 }

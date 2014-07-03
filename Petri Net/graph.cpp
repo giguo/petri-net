@@ -111,6 +111,12 @@ void graph::act()
         p3.act();
         t2.act();
         p1.act();
+        p1.update_delay_time();
+        p3.update_delay_time();
+        p5.update_delay_time();
+        p52.update_delay_time();
+        p7.update_delay_time();
+        p72.update_delay_time();
     }
 }
 using namespace std;
@@ -210,16 +216,24 @@ void graph::print_graph_nth(int i, const char* a) const
 }
 void graph::print_graph(int i) const
 {
-    cout << "now situation:" << i << endl;
+    cout << "now situation:" << i << ' ' << '\t';
+    print_light();
     for (int i = 0; i != 4; i++) {
         print_graph_nth(i, " \t");
     }
 }
 void graph::print_light() const
 {
-    cout << "local phase:" << t8.get_local_phase() << '\t' << "Green time remain:" << t8.get_local_phase_time() << endl;
+    cout << "local phase:" << t8.get_local_phase() << '\t' << "Green time remain:" << t8.get_local_phase_time() << '\t' << " Green lost time remain:" << t8.get_green_lost_time() << endl;
 }
-
+float graph::get_delay_time() const
+{
+    float tmp = 0.0;
+    tmp += p9.get_delay_time();
+    tmp += p921.get_delay_time();
+    tmp += p922.get_delay_time();
+    return tmp;
+}
 
 
 

@@ -166,3 +166,11 @@ int transition::get_local_phase_time() const
 {
     return l.remaintime;
 }
+bool transition::isCross()
+{
+    return iscross;
+}
+int transition::get_green_lost_time() const
+{
+    return l.green_losttime;
+}

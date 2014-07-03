@@ -44,6 +44,8 @@ public:
     int get_local_phase() const;
     int get_local_phase_time() const;
     void light_act();
+    bool isCross();
+    int get_green_lost_time() const;
 };
 #endif /* defined(__Petri_Net__transition__) */
 

@@ -74,6 +74,12 @@ void place::addcars(int x, int y, int cars)     //x表方向 y表转向 cars表�
         this->push(*(new token(x, y)));
     }
 }
+void place::update_delay_time()
+{
+    for (auto beg = contain.begin(); beg != contain.end(); beg++) {
+        (*beg).add_delay_time();
+    }
+}
 void place::act()
 {
     try {
@@ -95,4 +101,12 @@ void place::act()
 int place::getnowcars(int x,int y) const
 {
     return nowcars[x][y];
+}
+float place::get_delay_time() const
+{
+    float tmp = 0.0;
+    for (auto beg = contain.begin(); beg != contain.end(); beg++) {
+        tmp += (*beg).get_delay_time();
+    }
+    return tmp;
 }

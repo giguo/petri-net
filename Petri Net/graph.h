@@ -41,5 +41,6 @@ public:
     void print_graph(int i) const;
     void print_graph_nth(int i, const char* a) const;
     void print_light() const;
+    float get_delay_time() const;
 };
 #endif /* defined(__Petri_Net__graph__) */

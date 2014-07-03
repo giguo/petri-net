@@ -10,8 +10,8 @@
 #define __Petri_Net__light__
 
 #include <iostream>
-#include "token.h"
 
+class token;
 #define Light fixedLight
 const int frequency = 10;                   //更新频率
 const bool isfixed = 0;                     //是否选择固定相位
