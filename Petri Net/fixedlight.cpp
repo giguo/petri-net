@@ -13,12 +13,6 @@ light::light(){
     remaintime = greenlight_fixedtime;
     green_losttime = greenlight_losttime;
 }
-fixedLight::fixedLight()
-{
-    localphase = 1;
-    remaintime = greenlight_fixedtime;
-    green_losttime = greenlight_losttime;
-}
 void fixedLight::changephase()
 {
     localphase = localphase % 4 + 1;

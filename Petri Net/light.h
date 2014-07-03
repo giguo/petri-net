@@ -42,18 +42,20 @@ public:
 class fixedLight:public light
 {
 public:
-    fixedLight();
     void act();
     void changephase();
     bool canrun(int direct, int turn) const;
     bool canrun(const token& t)const;
 };
-//class adaptLight:public light
-//{
-//public:
-//    void act();
-//    void changephase();
-//    bool canrun(int direct, int turn) const;
-//    bool canrun(const token& t)const;
-//};
+class adaptLight:public light
+{
+private:
+    int lastphase;
+    int nextphase;
+public:
+    void act();
+    void changephase();
+    bool canrun(int direct, int turn) const;
+    bool canrun(const token& t)const;
+};
 #endif /* defined(__Petri_Net__light__) */
