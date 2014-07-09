@@ -110,3 +110,13 @@ float place::get_delay_time() const
     }
     return tmp;
 }
+int place::get_arrive_cars()const
+{
+    int k = 0;
+    for (int i = 0; i != 4; i++) {
+        for (int j = 0; j != 3; j++) {
+            k += (this->getnowcars(i, j));
+        }
+    }
+    return k;
+}

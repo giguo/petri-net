@@ -8,20 +8,22 @@
 
 #ifndef __Petri_Net__light__
 #define __Petri_Net__light__
-
+#include <vector>
 #include <iostream>
-
+class graph;
 class token;
-#define Light fixedLight
+
+//#define Light  adaptLight                 //选择何种方式
+#define Light  fixedLight                   //选择何种方式
 const int frequency = 10;                   //更新频率
-const bool isfixed = 0;                     //是否选择固定相位
-const int greenlight_fixedtime = 30;        //固定相位时绿灯时间
+const int greenlight_fixedtime = 50;        //固定相位时绿灯时间
 //const int yellowlight_time = 2;           //黄灯时间
 const int greenlight_losttime = 2;          //绿灯损失时间
-const int greenlight_mintime = 30;          //绿灯最小时间
+const int greenlight_mintime = 5;          //绿灯最小时间
 const int greenlight_maxtime = 80;          //绿灯最长时间
 const int redlight_mintime = 120;           //红灯最小时间
 const int redlight_maxtime = 200;           //红灯最长时间
+const int light_averagetime = 1;            //过绿灯的平均时间
 
 class light
 {
@@ -33,29 +35,32 @@ public:
     
 public:
     light();
-    virtual void act() = 0;                                 //更新
-    virtual void changephase() = 0;                         //切换相位
-    virtual bool canrun(int direct, int turn)const = 0;          //测试该方向能否走
-    virtual bool canrun(const token& t)const = 0;                //测试该token能否走
+    virtual void act(const std::vector<std::vector<int> >& g) = 0;                                 //更新
+    virtual void changephase(const std::vector<std::vector<int> >& g) = 0;                         //切换相位
+    virtual bool canrun(int direct, int turn)const = 0;                                            //测试该方向能否走
+    virtual bool canrun(const token& t)const = 0;                                                  //测试该token能否走
 };
 
 class fixedLight:public light
 {
 public:
-    void act();
-    void changephase();
-    bool canrun(int direct, int turn) const;
-    bool canrun(const token& t)const;
+    void act(const std::vector<std::vector<int> >& g);
+    void changephase(const std::vector<std::vector<int> >& g);
+    virtual bool canrun(int direct, int turn)const;          //测试该方向能否走
+    virtual bool canrun(const token& t)const;                //测试该token能否走
 };
 class adaptLight:public light
 {
 private:
     int lastphase;
     int nextphase;
+    int red_time[4];
 public:
-    void act();
-    void changephase();
-    bool canrun(int direct, int turn) const;
-    bool canrun(const token& t)const;
+    adaptLight();
+    void act(const std::vector<std::vector<int> >& g);
+    void changephase(const std::vector<std::vector<int> >& g);
+    virtual bool canrun(int direct, int turn)const;          //测试该方向能否走
+    virtual bool canrun(const token& t)const;                //测试该token能否走
+
 };
 #endif /* defined(__Petri_Net__light__) */

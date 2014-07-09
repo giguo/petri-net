@@ -1,4 +1,4 @@
-//
+ //
 //  graph.cpp
 //  Petri Net
 //
@@ -60,7 +60,7 @@ void graph::add1Car(bool realrandom)
                     p1.addcars(i, 0, 1);
                 }
                 else {
-                    if (tmp < flux[i][2]) {
+                    if (tmp < flux[i][1] + flux[i][2]) {
                         p1.addcars(i, 1, 1);
                     }
                     else {
@@ -82,7 +82,7 @@ void graph::add1Car(bool realrandom)
                     p1.addcars(i, 0, 1);
                 }
                 else {
-                    if (tmp < flux[i][2]) {
+                    if (tmp < flux[i][1] + flux[i][2]) {
                         p1.addcars(i, 1, 1);
                     }
                     else {
@@ -94,11 +94,52 @@ void graph::add1Car(bool realrandom)
         }
     }
 }
-void graph::act()
+void graph::add1Car(std::vector<std::vector<float> > flux)
 {
-    t8.light_act();
+    for (int i = 0; i != 4; i++) {
+        std::poisson_distribution<> b(flux[i][0] / frequency);
+        int hascar = b(real_r);
+        while (hascar) {
+            std::uniform_real_distribution<> u(0, 1);
+            float tmp = u(real_r);
+            if (tmp < flux[i][1]) {
+                p1.addcars(i, 0, 1);
+            }
+            else {
+                if (tmp < flux[i][1] + flux[i][2]) {
+                    p1.addcars(i, 1, 1);
+                }
+                else {
+                    p1.addcars(i, 2, 1);
+                }
+            }
+            --hascar;
+        }
+    }
+}
+
+void graph::act(int variety)
+{
+    t8.light_act(this->get_wait_cars());
     for (int i = 0; i != frequency; i++) {
-        add1Car();
+        if (variety != 0) {
+            if ((variety > 0 && variety <= 1000) || (variety > 5200 && variety <= 6200)) {
+                add1Car({{0.389,0.25,0.5,0.25},{0.236,0.33,0.33,0.33},{0.389,0.25,0.5,0.25},{0.236,0.33,0.33,0.33}});
+            }
+            else {
+                if ((variety > 1000 && variety <= 2200) || (variety > 4000 && variety <= 5200)) {
+                    add1Car({{0.5,0.25,0.5,0.25},{0.278,0.33,0.33,0.33},{0.5,0.25,0.5,0.25},{0.278,0.33,0.33,0.33}});
+                }
+                else {
+                    if (variety > 2200 && variety <= 4000) {
+                        add1Car({{0.556,0.25,0.5,0.25},{0.333,0.33,0.33,0.33},{0.556,0.25,0.5,0.25},{0.333,0.33,0.33,0.33}});
+                    }
+                }
+            }
+        }
+        else {
+            add1Car(1);
+        }
         t8.act();
         t82.act();
         p7.act();
@@ -111,10 +152,10 @@ void graph::act()
         p3.act();
         t2.act();
         p1.act();
-        p1.update_delay_time();
-        p3.update_delay_time();
-        p5.update_delay_time();
-        p52.update_delay_time();
+//        p1.update_delay_time();
+//        p3.update_delay_time();
+//        p5.update_delay_time();
+//        p52.update_delay_time();
         p7.update_delay_time();
         p72.update_delay_time();
     }
@@ -234,8 +275,22 @@ float graph::get_delay_time() const
     tmp += p922.get_delay_time();
     return tmp;
 }
-
-
-
-
-
+int graph::get_arrive_cars() const
+{
+    return p9.get_arrive_cars() + p921.get_arrive_cars() + p922.get_arrive_cars();
+}
+int graph::get_cross_cars() const
+{
+    return get_arrive_cars() + p7.get_arrive_cars() + p72.get_arrive_cars();
+}
+std::vector<std::vector<int> > graph::get_wait_cars() const
+{
+    vector<vector<int> > v({{0,0,0},{0,0,0},{0,0,0},{0,0,0}});
+    for (int i = 0; i != 4; i++) {
+        for (int j = 0; j != 3; j++) {
+            v[i][j] += p7.getnowcars(i, j);
+            v[i][j] += p72.getnowcars(i, j);
+        }
+    }
+    return v;
+}

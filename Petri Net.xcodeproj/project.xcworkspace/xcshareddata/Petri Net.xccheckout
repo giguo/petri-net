@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F4C6C45A-919D-4737-B1E4-66FCCC75C258</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Petri Net</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>6DB8E9F9-EC6B-460E-8996-B7421D86E163</key>
+		<string>https://github.com/qiangwei1992/petri-net.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Petri Net.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>6DB8E9F9-EC6B-460E-8996-B7421D86E163</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/qiangwei1992/petri-net.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>6DB8E9F9-EC6B-460E-8996-B7421D86E163</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>6DB8E9F9-EC6B-460E-8996-B7421D86E163</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Petri Net</string>
+		</dict>
+	</array>
+</dict>
+</plist>

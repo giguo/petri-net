@@ -8,18 +8,19 @@
 
 #include "light.h"
 #include "token.h"
+
 light::light(){
     localphase = 1;
     remaintime = greenlight_fixedtime;
     green_losttime = greenlight_losttime;
 }
-void fixedLight::changephase()
+void fixedLight::changephase(const std::vector<std::vector<int> >& g)
 {
     localphase = localphase % 4 + 1;
     remaintime = greenlight_fixedtime;
     green_losttime = greenlight_losttime;
 }
-void fixedLight::act()
+void fixedLight::act(const std::vector<std::vector<int> >& g)
 {
     if (green_losttime != 0) {
         --green_losttime;
@@ -29,7 +30,7 @@ void fixedLight::act()
     }
     if (remaintime == 0) {
         std::cerr << "\033[33mphase changed from " << localphase << " to " << localphase % 4 + 1 << "\033[0m" << std::endl;
-        changephase();
+        changephase(g);
     }
 }
 bool fixedLight::canrun(int direct, int turn) const

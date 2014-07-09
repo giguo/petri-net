@@ -30,6 +30,13 @@ bool transition::push(token& t)
         if (!l.canrun(t)) {
             return 0;
         }
+        if (this->contain.size() != 0) {
+            for (auto i = 0; i != contain.size(); i++) {
+                if (contain[i].first.getdirctions() == t.getdirctions()) {
+                    return 0;
+                }
+            }
+        }
     }
     if (this->next != nullptr) {
         if (nextnum == 1)
@@ -158,9 +165,9 @@ int transition::get_local_phase() const
 {
     return l.localphase;
 }
-void transition::light_act()
+void transition::light_act(const std::vector<std::vector<int> >& g)
 {
-    l.act();
+    l.act(g);
 }
 int transition::get_local_phase_time() const
 {

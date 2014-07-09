@@ -43,7 +43,7 @@ public:
     int getnowcars(int x, int y) const;
     int get_local_phase() const;
     int get_local_phase_time() const;
-    void light_act();
+    void light_act(const std::vector<std::vector<int> >& g);
     bool isCross();
     int get_green_lost_time() const;
 };

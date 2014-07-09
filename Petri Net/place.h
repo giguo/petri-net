@@ -39,6 +39,7 @@ public:
     bool subcapacity(int num);
     void addcars(int x, int y, int cars);
     int getnowcars(int x,int y) const;
+    int get_arrive_cars() const;
     void update_delay_time();
     float get_delay_time() const;
     //void free_notdelete();      //只释放拖肯，不改变nowcars

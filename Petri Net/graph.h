@@ -10,6 +10,7 @@
 #define __Petri_Net__graph__
 
 #include <iostream>
+#include <vector>
 #include <initializer_list>
 #include <string>
 #include <random>
@@ -36,11 +37,15 @@ private:
     
 public:
     graph(solveconfig config);
-    void act();
+    void act(int variety = 0);         //输入流量是否可变
     void add1Car(bool realrandom = 0);
+    void add1Car(std::vector<std::vector<float> > flux = {{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0}});
     void print_graph(int i) const;
     void print_graph_nth(int i, const char* a) const;
     void print_light() const;
     float get_delay_time() const;
+    int get_arrive_cars() const;
+    int get_cross_cars() const;
+    std::vector<std::vector<int> > get_wait_cars() const;
 };
 #endif /* defined(__Petri_Net__graph__) */

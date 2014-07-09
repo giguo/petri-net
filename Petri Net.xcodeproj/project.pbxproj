@@ -13,8 +13,9 @@
 		90C49172195BB6AD00BF1068 /* place.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90C49170195BB6AD00BF1068 /* place.cpp */; };
 		90C49175195BBA9600BF1068 /* token.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90C49173195BBA9600BF1068 /* token.cpp */; };
 		90C49178195BBCC400BF1068 /* transition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90C49176195BBCC400BF1068 /* transition.cpp */; };
-		90C594BE195C623A00148B5B /* light.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90C594BC195C623A00148B5B /* light.cpp */; };
+		90C594BE195C623A00148B5B /* fixedlight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90C594BC195C623A00148B5B /* fixedlight.cpp */; };
 		90C9D15B195EBD03007DB6F9 /* solveconfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90C9D159195EBD03007DB6F9 /* solveconfig.cpp */; };
+		90EFB0D3196507BB0098C075 /* adaptlight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 90EFB0D1196507BB0098C075 /* adaptlight.cpp */; };
 		90F54E54195EBA5A0010EA21 /* libboost_python.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90F54E53195EBA5A0010EA21 /* libboost_python.a */; };
 		90F54E56195EBA7B0010EA21 /* Python in Frameworks */ = {isa = PBXBuildFile; fileRef = 90F54E55195EBA7B0010EA21 /* Python */; };
 /* End PBXBuildFile section */
@@ -33,6 +34,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		905CC6001966CCC800D4B3C0 /* calculate.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = calculate.py; sourceTree = "<group>"; };
 		90623BB0195F07CE00FE62E6 /* config.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = config.py; sourceTree = "<group>"; };
 		9085E143195E8D620085DB56 /* graph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = graph.cpp; sourceTree = "<group>"; };
 		9085E144195E8D620085DB56 /* graph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = graph.h; sourceTree = "<group>"; };
@@ -45,10 +47,11 @@
 		90C49174195BBA9600BF1068 /* token.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = token.h; sourceTree = "<group>"; };
 		90C49176195BBCC400BF1068 /* transition.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = transition.cpp; sourceTree = "<group>"; };
 		90C49177195BBCC400BF1068 /* transition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = transition.h; sourceTree = "<group>"; };
-		90C594BC195C623A00148B5B /* light.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = light.cpp; sourceTree = "<group>"; };
+		90C594BC195C623A00148B5B /* fixedlight.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fixedlight.cpp; sourceTree = "<group>"; };
 		90C594BD195C623A00148B5B /* light.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = light.h; sourceTree = "<group>"; };
 		90C9D159195EBD03007DB6F9 /* solveconfig.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = solveconfig.cpp; sourceTree = "<group>"; };
 		90C9D15A195EBD03007DB6F9 /* solveconfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = solveconfig.h; sourceTree = "<group>"; };
+		90EFB0D1196507BB0098C075 /* adaptlight.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = adaptlight.cpp; sourceTree = "<group>"; };
 		90F54E53195EBA5A0010EA21 /* libboost_python.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_python.a; path = /usr/boost/libs/libboost_python.a; sourceTree = "<absolute>"; };
 		90F54E55195EBA7B0010EA21 /* Python */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = Python; path = /System/Library/Frameworks/Python.framework/Versions/2.7/Python; sourceTree = "<absolute>"; };
 		90F54E58195EBB0C0010EA21 /* config */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = config; path = "Petri Net/config"; sourceTree = "<group>"; };
@@ -98,7 +101,8 @@
 				90C49174195BBA9600BF1068 /* token.h */,
 				90C49173195BBA9600BF1068 /* token.cpp */,
 				90C594BD195C623A00148B5B /* light.h */,
-				90C594BC195C623A00148B5B /* light.cpp */,
+				90C594BC195C623A00148B5B /* fixedlight.cpp */,
+				90EFB0D1196507BB0098C075 /* adaptlight.cpp */,
 				90C9D15A195EBD03007DB6F9 /* solveconfig.h */,
 				90C9D159195EBD03007DB6F9 /* solveconfig.cpp */,
 				90C49169195BB69000BF1068 /* Petri_Net.1 */,
@@ -109,6 +113,7 @@
 		90C984F31962A09C009E2399 /* config */ = {
 			isa = PBXGroup;
 			children = (
+				905CC6001966CCC800D4B3C0 /* calculate.py */,
 				90F54E58195EBB0C0010EA21 /* config */,
 				90623BB0195F07CE00FE62E6 /* config.py */,
 			);
@@ -175,12 +180,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90EFB0D3196507BB0098C075 /* adaptlight.cpp in Sources */,
 				9085E145195E8D620085DB56 /* graph.cpp in Sources */,
 				90C49168195BB69000BF1068 /* main.cpp in Sources */,
 				90C9D15B195EBD03007DB6F9 /* solveconfig.cpp in Sources */,
 				90C49172195BB6AD00BF1068 /* place.cpp in Sources */,
 				90C49178195BBCC400BF1068 /* transition.cpp in Sources */,
-				90C594BE195C623A00148B5B /* light.cpp in Sources */,
+				90C594BE195C623A00148B5B /* fixedlight.cpp in Sources */,
 				90C49175195BBA9600BF1068 /* token.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
